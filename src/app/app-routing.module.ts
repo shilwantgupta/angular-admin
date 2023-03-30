@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-
 const routes: Routes = [
-  {path:'', redirectTo:'home', pathMatch:"full"},
-  {path:'home', component: HomeComponent},
-  {path:'dashboard', component: DashboardComponent},
-  {path:"**",component:NotfoundComponent}
+  { path: '', redirectTo: 'login', pathMatch: "full" },
+  { path: 'login', component: LoginComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'admin', 
+  canActivate:[AuthGuard],
+  loadChildren: () => import('./admin/admin.module').then((mod) => mod.AdminModule) },
+  { path: "**", component: NotfoundComponent }
 ];
 
 @NgModule({

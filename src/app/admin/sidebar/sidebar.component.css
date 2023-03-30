@@ -21,6 +21,7 @@ h2{
     font-size: 0.8rem;
     height: 44px !important;
     margin-bottom: 4px;
+  
 }
 .mat-list-item:hover {
     color: #f2f5f7 !important;
@@ -28,6 +29,7 @@ h2{
 .mat-list-item ::ng-deep .mat-list-item-content {
     border-radius: 5px;
     margin: 0 8px;
+    cursor: pointer;
 }
 .mat-list-item ::ng-deep .mat-list-item-content:hover {
     background: #2c3344 !important;

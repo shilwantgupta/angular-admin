@@ -1,0 +1,12 @@
+.form-password{
+    position: relative;
+}
+.form-password mat-icon{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    cursor: pointer;
+}
+.form-password input{
+    padding-right: 40px!important;
+}
