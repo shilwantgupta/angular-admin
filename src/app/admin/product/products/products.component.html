@@ -1,0 +1,45 @@
+<div class="container-fluid page">
+    <div class="d-flex justify-content-between page__box p-3 "><span>Product</span>
+      <button class="add__btn"><a routerLink="/admin/add-product">+ Add Product</a></button></div>
+    <hr class="divider">
+    <div class="page__content   position-relative">
+      <div class="page__content-data  ">
+        <div class="d-flex align-center justify-content-between mb-3">
+          <select name="by" id="sortby" #sortby (change)="onSortHandler(sortby.value)">
+            <option value="">Sorting</option>
+            <option value="N">Newest</option>
+            <option value="H">High-Low</option>
+            <option value="L">Low-High</option>
+          </select>
+          <input type="text" name="search" id="search" #search (keyup)="onSearchHandler(search.value)"
+            placeholder="Search...">
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th *ngFor="let el of cateColumns">{{el}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prod of products; let i = index">
+              <td>{{ (page > 1)? i + 1 + page :i+1 }}</td>
+              <td>{{prod['title']}}</td>
+              <td>{{prod['category']['title']}}</td>
+              <td>{{prod['price']}}</td>
+              <td>{{prod['quantity']}}</td>
+              <td>{{prod['sortdesc']}}</td>
+              <td><img src="{{path}}/{{prod['image']}}" height="60" width="60" title="{{prod['title']}}" /></td>
+              <td>
+                <a routerLink="/admin/edit-product/{{prod['_id']}}"><mat-icon>edit</mat-icon></a>
+                <button class="btn" (click)="onDeleteHandler(prod['_id'])"><mat-icon>delete</mat-icon></button>
+                <mat-icon>view</mat-icon>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ngb-pagination class="justify-content-end" [collectionSize]="collectionSize" [pageSize]="pageSize"
+          [(page)]="page" (click)="onPagination()" aria-label="Default pagination"></ngb-pagination>
+      </div>
+    </div>
+  </div>
+  

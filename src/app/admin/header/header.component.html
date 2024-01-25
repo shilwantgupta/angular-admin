@@ -11,10 +11,10 @@
             <mat-icon class="user-image-icon ml-1 ">keyboard_arrow_down</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="onLogout()">
-              <mat-icon>profile</mat-icon>
+            <a mat-menu-item routerLink="profile">
+              <mat-icon>account_circle</mat-icon>
               Profile
-            </button>
+            </a>
             <mat-divider></mat-divider>
             <button mat-menu-item (click)="onLogout()">
               <mat-icon>exit_to_app</mat-icon>

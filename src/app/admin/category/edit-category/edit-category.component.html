@@ -1,0 +1,44 @@
+<div class="container-fluid page">
+    <div class="d-flex justify-content-between page__box p-3 ">
+      <span><a routerLink="/admin/categories">Category</a> / Edit Category</span>
+    </div>
+    <hr class="divider">
+    <div class="page__content   position-relative">
+      <div class="page__content-data  ">
+        <div class="row">
+          <div class="col-md-4">
+            <div>
+              <form [formGroup]="updateCategoryForm" (ngSubmit)="updateCategory()">
+                <div class="form-group mb-3">
+                  <input type="text" class="form-control" formControlName="title" placeholder="Title" value="categoryData" />
+                  <div *ngIf="f.title.touched && f.title.invalid" class="alert alert-danger p-0 px-2">
+                    <div *ngIf="f.title.errors?.['required']">Title is required.</div>
+                    <div *ngIf="f.title.errors?.['minlength']">Title should be 3 character.</div>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <input type="text" class="form-control" formControlName="description" placeholder="Description" />
+                  <div *ngIf="f.description.touched && f.description.invalid" class="alert alert-danger p-0 px-2">
+                    <div *ngIf="f.description.errors?.['required']">Description is required.</div>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <input type="file" class="form-control" (change)="onFileChange($event)" formControlName="image" />
+                  <div *ngIf="f.image.touched && f.image.invalid" class="alert alert-danger p-0 px-2">
+                    <div *ngIf="f.image.errors?.['required']">Image is required.</div>
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <button type="submit" [disabled]="updateCategoryForm.invalid" class="btn btn-primary px-5">Update</button>
+                </div>
+                <div class="form-group mb-3" *ngIf="imageName">
+                    <img [src]="imageName" height="100" width="100" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

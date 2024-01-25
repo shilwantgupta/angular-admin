@@ -1,0 +1,4 @@
+@import '../../admin/admin.component.css';
+ngb-pagination{
+    display: inline-flex;
+}
